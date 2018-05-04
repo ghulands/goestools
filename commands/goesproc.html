@@ -98,6 +98,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../guides.html">Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources.html">Resources</a></li>
 </ul>
 
             
@@ -279,36 +280,36 @@ $ convert -loop <span class="m">0</span> -delay <span class="m">50</span> *.png 
 <span class="n">region</span> <span class="o">=</span> <span class="s">&quot;fd&quot;</span>
 <span class="n">dir</span> <span class="o">=</span> <span class="s">&quot;./goes16/fd/{time:%Y-%m-%d}&quot;</span>
 
-<span class="c1"># # GOES-16 full disk, channel 2, with contrast curve applied.</span>
-<span class="c1"># # The section [handler.remap] below applies to this handler.</span>
-<span class="c1"># [[handler]]</span>
-<span class="c1"># type = &quot;image&quot;</span>
-<span class="c1"># product = &quot;goes16&quot;</span>
-<span class="c1"># region = &quot;fd&quot;</span>
-<span class="c1"># channels = [ &quot;ch02&quot; ]</span>
-<span class="c1"># directory = &quot;./goes16/fd/{time:%Y-%m-%d}&quot;</span>
-<span class="c1"># filename = &quot;{filename}_contrast&quot;</span>
+<span class="c1"># GOES-16 full disk, channel 2, with contrast curve applied.</span>
+<span class="c1"># The section [handler.remap] below applies to this handler.</span>
+<span class="p">[[</span><span class="n">handler</span><span class="p">]]</span>
+<span class="n">type</span> <span class="o">=</span> <span class="s">&quot;image&quot;</span>
+<span class="n">product</span> <span class="o">=</span> <span class="s">&quot;goes16&quot;</span>
+<span class="n">region</span> <span class="o">=</span> <span class="s">&quot;fd&quot;</span>
+<span class="n">channels</span> <span class="o">=</span> <span class="p">[</span> <span class="s">&quot;ch02&quot;</span> <span class="p">]</span>
+<span class="n">directory</span> <span class="o">=</span> <span class="s">&quot;./goes16/fd/{time:%Y-%m-%d}&quot;</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="s">&quot;{filename}_contrast&quot;</span>
 
-<span class="c1">#   # Check out https://github.com/hdoverobinson/wx-star_false-color for a</span>
-<span class="c1">#   # GOES-16 contrast curve and false color LUT. Uncomment the snippet</span>
-<span class="c1">#   # below and update the path to point to the contrast curve file.</span>
-<span class="c1">#   [handler.remap.ch02]</span>
-<span class="c1">#   path = &quot;./wx-star.com_GOES-R_ABI_C02_contrast-curve.pgm&quot;</span>
+  <span class="c1"># Check out https://github.com/hdoverobinson/wx-star_false-color for a</span>
+  <span class="c1"># GOES-16 contrast curve and false color LUT. Uncomment the snippet</span>
+  <span class="c1"># below and update the path to point to the contrast curve file.</span>
+  <span class="p">[</span><span class="n">handler</span><span class="p">.</span><span class="n">remap</span><span class="p">.</span><span class="n">ch02</span><span class="p">]</span>
+  <span class="n">path</span> <span class="o">=</span> <span class="s">&quot;./wx-star.com_GOES-R_ABI_C02_contrast-curve.pgm&quot;</span>
 
-<span class="c1"># # GOES-16 full disk, channel 2 and 13 to produce a false color image.</span>
-<span class="c1"># # The sections [handler.remap] and [handler.lut] below apply to this handler.</span>
-<span class="c1"># [[handler]]</span>
-<span class="c1"># type = &quot;image&quot;</span>
-<span class="c1"># product = &quot;goes16&quot;</span>
-<span class="c1"># region = &quot;fd&quot;</span>
-<span class="c1"># channels = [ &quot;ch02&quot;, &quot;ch13&quot; ]</span>
-<span class="c1"># directory = &quot;./goes16/false-color/fd/{time:%Y-%m-%d}&quot;</span>
+<span class="c1"># GOES-16 full disk, channel 2 and 13 to produce a false color image.</span>
+<span class="c1"># The sections [handler.remap] and [handler.lut] below apply to this handler.</span>
+<span class="p">[[</span><span class="n">handler</span><span class="p">]]</span>
+<span class="n">type</span> <span class="o">=</span> <span class="s">&quot;image&quot;</span>
+<span class="n">product</span> <span class="o">=</span> <span class="s">&quot;goes16&quot;</span>
+<span class="n">region</span> <span class="o">=</span> <span class="s">&quot;fd&quot;</span>
+<span class="n">channels</span> <span class="o">=</span> <span class="p">[</span> <span class="s">&quot;ch02&quot;</span><span class="p">,</span> <span class="s">&quot;ch13&quot;</span> <span class="p">]</span>
+<span class="n">directory</span> <span class="o">=</span> <span class="s">&quot;./goes16/false-color/fd/{time:%Y-%m-%d}&quot;</span>
 
-<span class="c1">#   [handler.remap.ch02]</span>
-<span class="c1">#   path = &quot;./assets/wxstar_goes16_ch02_curve.png&quot;</span>
+  <span class="p">[</span><span class="n">handler</span><span class="p">.</span><span class="n">remap</span><span class="p">.</span><span class="n">ch02</span><span class="p">]</span>
+  <span class="n">path</span> <span class="o">=</span> <span class="s">&quot;./assets/wxstar_goes16_ch02_curve.png&quot;</span>
 
-<span class="c1">#   [handler.lut]</span>
-<span class="c1">#   path = &quot;./assets/wxstar_goes16_lut.png&quot;</span>
+  <span class="p">[</span><span class="n">handler</span><span class="p">.</span><span class="n">lut</span><span class="p">]</span>
+  <span class="n">path</span> <span class="o">=</span> <span class="s">&quot;./assets/wxstar_goes16_lut.png&quot;</span>
 
 <span class="c1"># The raw GOES-15 full disk images are a mix of left</span>
 <span class="c1"># and right aligned images. The image headers contain</span>
