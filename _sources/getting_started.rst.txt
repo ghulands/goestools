@@ -1,0 +1,4 @@
+Installation
+============
+
+This assumes you have a setup capable of receiving a LRIT/HRIT signal.

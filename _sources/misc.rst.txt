@@ -1,0 +1,12 @@
+..
+   The demodulator works as follows.  In the first stage of the
+   demodulator automatic gain control is applied to the signal. Next, it
+   is fed to a Costas loop to compensate for frequency difference. Then,
+   a root-raised cosine filter is applied. Finally, clock recovery runs
+   to produce a single complex sample per symbol (293883 per second for
+   LRIT or 927000 per second for HRIT).
+
+   The decoder takes a stream of "soft" bits (floating point numbers in
+   the range [-1.0, +1.0]), performs synchronization, runs the Viterbi
+   decoder, a derandomizer, and finally Reed-Solomon error correction.
+   Every valid packet is published on a nanomsg socket.
