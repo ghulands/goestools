@@ -175,13 +175,36 @@ that I have confirmed to work. Reproducing this setup with new
 components costs about $200 (excluding tax/shipping).</p>
 <p>The bill of materials is as follows:</p>
 <ul class="simple">
-<li>Raspberry Pi 2 (v1.1+) or higher</li>
-<li>RTL-SDR with R820T2 tuner</li>
-<li>NooElec SAWbird with bias tee (LNA and filter board)</li>
-<li>L-Com 1.9 GHz Parabolic Grid Antenna</li>
-<li>Jumper/adapter from male Type N to male SMA (for antenna to LNA)</li>
-<li>Jumper/adapter from male SMA to male SMA (for LNA to RTL-SDR)</li>
+<li>Raspberry Pi 2 (v1.1+) or higher<ul>
+<li>Available at <a class="reference external" href="http://www.newark.com/raspberry-pi/2773729/sbc-arm-cortex-a53-1gb-sdram/dp/49AC7637">Newark</a>; $35 (Raspberry Pi 3 Model B+)</li>
 </ul>
+</li>
+<li>RTL-SDR with R820T2 tuner<ul>
+<li>Available at <a class="reference external" href="http://www.nooelec.com/store/sdr/sdr-receivers/nesdr/nesdr-smart-sdr.html">NooElec</a>; $24 (NooElec NESDR SMArt)</li>
+</ul>
+</li>
+<li>NooElec SAWBird with bias tee (LNA and filter board)<ul>
+<li>Available at NooElec (send an email to <a class="reference external" href="mailto:support&#37;&#52;&#48;nooelec&#46;com">support<span>&#64;</span>nooelec<span>&#46;</span>com</a>); ~$25</li>
+</ul>
+</li>
+<li>L-Com 1.9 GHz Parabolic Grid Antenna<ul>
+<li>Available at <a class="reference external" href="http://www.l-com.com/wireless-antenna-hyperlink-brand-19-ghz-22-dbi-parabolic-grid-antenna">L-Com</a>; $89</li>
+</ul>
+</li>
+<li>Adapter from male Type N to male SMA (for antenna to LNA)<ul>
+<li>Available at <a class="reference external" href="http://www.l-com.com/coaxial-coaxial-adapter-n-male-sma-male">L-Com</a>; $7</li>
+</ul>
+</li>
+<li>Jumper from male SMA to male SMA (for LNA to RTL-SDR)<ul>
+<li>Available at <a class="reference external" href="http://www.nooelec.com/store/sdr/sdr-adapters-and-cables/sdr-cables/male-sma-to-male-sma-pigtail-rg316-0-5-length.html">NooElec</a>; $8</li>
+</ul>
+</li>
+</ul>
+<p>Instead of the listed RTL-SDR, you can also opt to buy the <a class="reference external" href="http://www.nooelec.com/store/sdr/sdr-receivers/nesdr/nesdr-smartee-sdr.html">NESDR
+SMArTee</a> ($26) which has an always-on bias tee for powering the
+SAWBird SAWBird LNA. Without an integrated bias tee you’ll have to
+supply power to the SAWBird yourself with a micro-USB cable (see
+pictures below).</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Additional items such as power supplies or mounting hardware
@@ -217,11 +240,11 @@ this dish (blocked line of sight, local interference, etc).</p>
 <ul class="simple">
 <li>The grid dish antenna has a female Type N connector so to connect it
 to the SAWbird we need a male Type N to male SMA adapter (in the
-picture you see the adapter and an SMA-M to SMA-M jumper).</li>
-<li>The NooElec SAWbird is connected to the grid dish antenna on the
-input and the RTL-SDR on the output. It is powered from the Pi over
-USB (the bias tee version of the SAWbird has a micro-USB connector).</li>
-<li>The RTL-SDR is connected to the SAWbird with an SMA-M to SMA-M
+picture you see the adapter and an male SMA to male SMA jumper).</li>
+<li>The NooElec SAWBird is connected to the grid dish antenna on the
+input and the RTL-SDR on the output. It is powered by the Pi over
+USB (the bias tee version of the SAWBird has a micro-USB connector).</li>
+<li>The RTL-SDR is connected to the SAWBird with an male SMA to male SMA
 jumper.</li>
 <li>In this setup, the Pi gets its power over USB.</li>
 <li>In this setup, the Pi is connected to the network over Ethernet.</li>
@@ -275,6 +298,8 @@ Raspberry Pi 2.</li>
 <li>Empirical evidence shows that adding another LNA <em>after</em> the NooElec
 SAWbird improves signal quality (e.g. going from Viterbi error rate
 ~150 to ~100).</li>
+<li><a class="reference external" href="https://twitter.com/usa_satcom/status/820773345956200449">This post</a> by <a class="reference external" href="https://twitter.com/usa_satcom">&#64;usa_satcom</a>
+showing the grid antenna is capable of receiving LRIT.</li>
 </ul>
 </div>
 </div>
