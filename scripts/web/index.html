@@ -1,0 +1,123 @@
+<html>
+<head>
+<style type="text/css">
+body {
+  background-color: black;
+}
+div.channel {
+  min-width: 500px;
+  min-height: 500px;
+  display: inline-block;
+  margin: 0px;
+  border: 0px solid white;
+  background-repeat: no-repeat;
+  background-size: contain;
+  image-rendering: pixelated;
+}
+</style>
+</head>
+<body>
+  <div class="channel"></div>
+  <div class="channel"></div>
+  <div class="channel"></div>
+  <div class="channel"></div>
+  <div class="channel"></div>
+  <div class="channel"></div>
+
+  <script src="jquery-3.3.1.min.js"></script>
+  <script>
+var images = [
+"/tmp/funz/2018-05-18/GOES16_FD_CH02_20180518T000041Z.jpg",
+"/tmp/funz/2018-05-18/GOES16_FD_CH07_20180518T000041Z.jpg",
+"/tmp/funz/2018-05-18/GOES16_FD_CH08_20180518T000041Z.jpg",
+"/tmp/funz/2018-05-18/GOES16_FD_CH13_20180518T000041Z.jpg",
+"/tmp/funz/2018-05-18/GOES16_FD_CH14_20180518T000041Z.jpg",
+"/tmp/funz/2018-05-18/GOES16_FD_FC_20180518T000041Z.jpg",
+];
+$(document).ready(function() {
+  $("div.channel").each(function(index) {
+    console.log(images[index]);
+    $(this).css("background-image", "url(" + images[index] + ")");
+  });
+});
+
+var scale = 100;
+var pos = {x: 0, y: 0};
+
+function handleUpDown(event) {
+  var factor = 0.1;
+  // handle up/down
+    if (event.which == 38) {
+      scale *= 1 + factor;
+      pos.x = (pos.x - 250) * (1 + factor) + 250;
+      pos.y = (pos.y - 250) * (1 + factor) + 250;
+    }
+    if (event.which == 40) {
+      scale *= 1 - factor;
+      pos.x = (pos.x - 250) * (1 - factor) + 250;
+      pos.y = (pos.y - 250) * (1 - factor) + 250;
+    }
+    $("div.channel").each(function(index) {
+    });
+
+      $("div.channel").each(function(index) {
+        console.log(images[index]);
+        $(this).css("background-size", "" + scale + "%");
+        $(this).css("background-position", "" + pos.x + " " + pos.y);
+
+      });
+    event.preventDefault();
+    return;
+}
+
+function handleLeftRight(event) {
+}
+
+$(document).keydown(function(event) {
+  switch(event.which) {
+    case 37:
+    case 39:
+    handleLeftRight(event);
+    break;
+    case 38:
+    case 40:
+    handleUpDown(event);
+    break;
+  }
+});
+
+
+var reference = null;
+
+$(document).mousedown(function(event) {
+  var originalEvent = event.originalEvent;
+  reference = originalEvent;
+  console.log(event);
+});
+
+$(document).mousemove(function(event) {
+  var originalEvent = event.originalEvent;
+  if (reference != null) {
+    var dx = pos.x + originalEvent.clientX - reference.clientX;
+    var dy = pos.y + originalEvent.clientY - reference.clientY;
+    $("div.channel").each(function(index) {
+      $(this).css("background-position", "" + dx + " " + dy);
+    });
+  }
+});
+
+$(document).mouseup(function(event) {
+  var originalEvent = event.originalEvent;
+  if (reference != null) {
+    pos.x += originalEvent.clientX - reference.clientX;
+    pos.y += originalEvent.clientY - reference.clientY;
+    reference = null;
+    $("div.channel").each(function(index) {
+      $(this).css("background-position", "" + dx + " " + dy);
+    });
+  }
+});
+
+  </script>
+</body>
+</html>
